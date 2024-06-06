@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoSteamBackendPry.utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace NoSteamBackendPry.repository
 {
-    public interface BaseRepo<T>
+    internal abstract class BaseRepo
     {
-        public T GetById(int id);
-        public List<T> GetAll();
-        public T Save(T entity);
-        public T DeleteById(int id);
-        public T Update(T entity);
+        protected ConnectionDb connDb;
 
+        protected BaseRepo() {
+            connDb = new ConnectionDb(ConnectionDb.UTN_CONN_STRING);
+        }
     }
 }
